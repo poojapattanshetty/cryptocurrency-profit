@@ -1,6 +1,6 @@
 [
   {
-    "currency": "BTC",
+    "currencyType": "BTC",
     "date": "20180507",
     "quotes": [
       {
@@ -26,7 +26,7 @@
     ]
   },
   {
-    "currency": "ETC",
+    "currencyType": "ETC",
     "date": "20180507",
     "quotes": [
       {
@@ -52,7 +52,7 @@
     ]
   },
   {
-    "currency": "LTC",
+    "currencyType": "LTC",
     "date": "20180507",
     "quotes": [
       {
