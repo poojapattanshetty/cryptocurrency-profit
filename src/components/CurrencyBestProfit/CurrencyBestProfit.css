@@ -1,0 +1,12 @@
+.MuiCard-root {
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.MuiGrid-container {
+  width: 100%;
+  box-sizing: border-box;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}

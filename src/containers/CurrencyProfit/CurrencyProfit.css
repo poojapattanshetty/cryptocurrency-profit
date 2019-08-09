@@ -1,0 +1,32 @@
+.toolbar {
+  background: #000;
+  color: red;
+}
+
+.MuiTypography-h6 {
+  font-size: 2em;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bolder;
+  line-height: 1.6;
+  letter-spacing: 2em;
+}
+
+.container {
+  margin-top: 8em;
+}
+
+.MuiContainer-root {
+  width: 80% !important;
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.MuiGrid-container {
+  width: 80%;
+  box-sizing: border-box;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
