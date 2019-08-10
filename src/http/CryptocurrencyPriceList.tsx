@@ -6,3 +6,5 @@ export const getCryptocurrencyPriceList = () => {
     .get(apiBaseUrl + '/v1/cryptocurrency-pricelist')
     .then(value => value.data);
 };
+
+

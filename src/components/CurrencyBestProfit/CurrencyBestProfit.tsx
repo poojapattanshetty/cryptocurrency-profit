@@ -15,8 +15,7 @@ const currencyBestProfit = ({
   currencyType
 }: ICurrencyBestProfitProps) => {
   return (
-    <Grid container justify="center">
-      <Grid item xs={12}>
+      <Grid item xs={4}>
         <Card className="text-center">
           <CardHeader title="07-May-18" />
           <Divider />
@@ -50,7 +49,6 @@ const currencyBestProfit = ({
           <CardContent>Profit: ${currencyProfit.toFixed(2)}</CardContent>
         </Card>
       </Grid>
-    </Grid>
   );
 };
 
