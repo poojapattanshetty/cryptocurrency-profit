@@ -7,15 +7,20 @@ import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
 
 import './CurrencyBestProfit.css';
+import { ICurrencyBestProfitProps } from '../../classes/CurrencyBestProfit/ICurrencyBestProfitProps';
 
-const currencyBestProfit = () => {
+const currencyBestProfit = ({
+  currencyProfit,
+  currencyProfitDetails,
+  currencyType
+}: ICurrencyBestProfitProps) => {
   return (
     <Grid container justify="center">
       <Grid item xs={12}>
         <Card className="text-center">
           <CardHeader title="07-May-18" />
           <Divider />
-          <div>BTC</div>
+          <div>{currencyType}</div>
           <Divider />
 
           <CardContent>
@@ -27,22 +32,22 @@ const currencyBestProfit = () => {
                 Sell
               </Grid>
               <Grid item xs={6}>
-                $34.98
+                ${currencyProfitDetails.bestBuyingPrice}
               </Grid>
               <Grid item xs={6}>
-                $34.07
+                ${currencyProfitDetails.bestSellingPrice}
               </Grid>
               <Grid item xs={6}>
-                (09:15AM)
+                {currencyProfitDetails.buyingTime}
               </Grid>
               <Grid item xs={6}>
-                (12:30PM)
+                {currencyProfitDetails.sellingTime}
               </Grid>
             </Grid>
           </CardContent>
           <Divider />
 
-          <CardContent>Profit: $2.03</CardContent>
+          <CardContent>Profit: ${currencyProfit.toFixed(2)}</CardContent>
         </Card>
       </Grid>
     </Grid>

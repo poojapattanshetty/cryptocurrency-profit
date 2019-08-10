@@ -12,6 +12,8 @@ import { ICryptocurrencyPriceList } from '../../classes/ICryptocurrencyPriceList
 import { getCryptocurrencyPriceList } from '../../http/CryptocurrencyPriceList';
 import CurrencyBestProfit from '../../components/CurrencyBestProfit/CurrencyBestProfit';
 import { Container, Grid } from '@material-ui/core';
+import { Iquote } from '../../classes/IQuote';
+import { ICurrencyProfitDetails } from '../../classes/CurrencyProfit/ICurrencyProfitDetails';
 
 class CurrencyProfit extends React.PureComponent<
   ICurrencyProfitProps,
@@ -46,25 +48,60 @@ class CurrencyProfit extends React.PureComponent<
         <br />
         <Container className="container">
           <Grid container justify="center" spacing={8}>
-            <Grid item xs={4}>
-              <CurrencyBestProfit />
-            </Grid>
-            <Grid item xs={4}>
-              <CurrencyBestProfit />
-            </Grid>
-            <Grid item xs={4}>
-              <CurrencyBestProfit />
-            </Grid>
+            {this.getProfitDetails()}
           </Grid>
         </Container>
-        {/* <h5>
-          {this.state.cryptocurrencyPriceList.map((crypto, index) => (
-            <li key={index}>{crypto.currencyType}</li>
-          ))}
-        </h5> */}
       </>
     );
   }
+
+  getProfitDetails = () => {
+    return this.state.cryptocurrencyPriceList.map(
+      (cryptocurrencyDetails: ICryptocurrencyPriceList) => {
+        const {
+          currencyProfit,
+          currencyProfitDetails
+        } = this.calculateCurrencyProfit(cryptocurrencyDetails.quotes);
+        return (
+          <Grid item xs={4}>
+            <CurrencyBestProfit
+              currencyProfit={currencyProfit}
+              currencyProfitDetails={currencyProfitDetails}
+              currencyType={cryptocurrencyDetails.currencyType}
+            />
+          </Grid>
+        );
+      }
+    );
+  };
+
+  calculateCurrencyProfit = (currencyQuotes: Iquote[]) => {
+    let currencyProfit = currencyQuotes[1].price - currencyQuotes[0].price;
+    let buyingQuote: Iquote = {
+      time: currencyQuotes[0].time,
+      price: currencyQuotes[0].price
+    };
+    let currencyProfitDetails: ICurrencyProfitDetails = {
+      bestBuyingPrice: 0,
+      bestSellingPrice: 0,
+      buyingTime: '',
+      sellingTime: ''
+    };
+
+    for (let i = 1; i < currencyQuotes.length; i++) {
+      if (currencyQuotes[i].price - buyingQuote.price > currencyProfit) {
+        currencyProfit = currencyQuotes[i].price - buyingQuote.price;
+        currencyProfitDetails.bestSellingPrice = currencyQuotes[i].price;
+        currencyProfitDetails.sellingTime = currencyQuotes[i].time;
+        currencyProfitDetails.bestBuyingPrice = buyingQuote.price;
+        currencyProfitDetails.buyingTime = buyingQuote.time;
+      }
+      if (currencyQuotes[i].price < buyingQuote.price) {
+        buyingQuote.price = currencyQuotes[i].price;
+      }
+    }
+    return { currencyProfit, currencyProfitDetails };
+  };
 }
 
 export default CurrencyProfit;

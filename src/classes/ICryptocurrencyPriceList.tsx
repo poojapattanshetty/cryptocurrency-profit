@@ -3,6 +3,6 @@ import { Iquote } from './IQuote';
 
 export interface ICryptocurrencyPriceList {
   currencyType: CurrencyType;
-  date: Date;
+  date: string;
   quotes: Iquote[];
 }
