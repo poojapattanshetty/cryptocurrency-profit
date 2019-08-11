@@ -17,7 +17,8 @@ const CurrencyProfitWidget: React.FunctionComponent<ICurrencyProfitWidgetProps> 
   date
 }: ICurrencyProfitWidgetProps) => {
   return (
-    <Grid item xs={4}>
+    <Grid item xs={12} sm={8} md={4} lg={4} xl=
+    {4}>
       <Card className="text-center">
         <CardHeader title={formatDate(date)} />
         <Divider />
