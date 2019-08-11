@@ -14,8 +14,8 @@ const calculateCurrencyProfit = (currencyQuotes: Iquote[]) => {
   let currencyProfitDetails: ICurrencyProfitDetails = {
     bestBuyingPrice: 0,
     bestSellingPrice: 0,
-    buyingTime: '',
-    sellingTime: ''
+    buyingTime: new Date(),
+    sellingTime: new Date()
   };
 
   for (let i = 1; i < currencyQuotes.length; i++) {
@@ -33,24 +33,13 @@ const calculateCurrencyProfit = (currencyQuotes: Iquote[]) => {
   return { currencyProfit, currencyProfitDetails };
 };
 
-const CurrencyBestProfit: React.FunctionComponent<ICurrencyBestProfitProps> = ({
-  currencyQuotes,
-  currencyType,
-  date
-}) => {
+const CurrencyBestProfit: React.FunctionComponent<ICurrencyBestProfitProps> = ({ currencyQuotes, currencyType, date }) => {
   //calculate best profit for each currency
-  const { currencyProfit, currencyProfitDetails } = calculateCurrencyProfit(
-    currencyQuotes
-  );
+  const { currencyProfit, currencyProfitDetails } = calculateCurrencyProfit(currencyQuotes);
 
   //render custom component for each currency
   return (
-    <CurrencyProfitWidget
-      currencyProfit={currencyProfit}
-      currencyProfitDetails={currencyProfitDetails}
-      currencyType={currencyType}
-      date={date}
-    />
+    <CurrencyProfitWidget currencyProfit={currencyProfit} currencyProfitDetails={currencyProfitDetails} currencyType={currencyType} date={date} />
   );
 };
 

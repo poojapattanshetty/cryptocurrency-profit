@@ -1,4 +1,4 @@
 export interface Iquote {
-  time: string;
+  time: Date;
   price: number;
 }

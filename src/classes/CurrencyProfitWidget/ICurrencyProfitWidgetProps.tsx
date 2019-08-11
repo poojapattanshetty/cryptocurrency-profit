@@ -4,5 +4,5 @@ export interface ICurrencyProfitWidgetProps {
   currencyProfit: number;
   currencyProfitDetails: ICurrencyProfitDetails;
   currencyType: string;
-  date: string;
+  date: Date;
 }

@@ -1,7 +1,6 @@
 import React from 'react';
 
 import './CurrencyProfit.css';
-import { ICurrencyProfitProps } from '../../classes/CurrencyProfit/ICurrencyProfitProps';
 import { ICurrencyProfitState } from '../../classes/CurrencyProfit/ICurrencyProfitState';
 import { ICryptocurrencyPriceList } from '../../classes/ICryptocurrencyPriceList';
 
@@ -9,7 +8,7 @@ import { Container, Grid } from '@material-ui/core';
 import { getCryptocurrencyPriceList } from '../../http/CryptocurrencyPriceList';
 import { CurrencyBestProfit } from '../../components/CurrencyBestProfit/CurrencyBestProfit';
 
-class CurrencyProfit extends React.PureComponent<ICurrencyProfitProps, ICurrencyProfitState> {
+class CurrencyProfit extends React.PureComponent<{}, ICurrencyProfitState> {
   public state = {
     cryptocurrencyPriceList: [] as ICryptocurrencyPriceList[]
   };
@@ -31,9 +30,10 @@ class CurrencyProfit extends React.PureComponent<ICurrencyProfitProps, ICurrency
     return (
       <Container className="container">
         <Grid container justify="center" spacing={8}>
-          {this.state.cryptocurrencyPriceList.map((cryptocurrencyDetails: ICryptocurrencyPriceList) => {
+          {this.state.cryptocurrencyPriceList.map((cryptocurrencyDetails: ICryptocurrencyPriceList, index) => {
             return (
               <CurrencyBestProfit
+                key={index}
                 currencyQuotes={cryptocurrencyDetails.quotes}
                 currencyType={cryptocurrencyDetails.currencyType}
                 date={cryptocurrencyDetails.date}

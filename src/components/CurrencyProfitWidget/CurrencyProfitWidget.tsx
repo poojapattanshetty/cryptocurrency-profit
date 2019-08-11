@@ -8,6 +8,7 @@ import Divider from '@material-ui/core/Divider';
 
 import './CurrencyProfitWidget.css';
 import { ICurrencyProfitWidgetProps } from '../../classes/CurrencyProfitWidget/ICurrencyProfitWidgetProps';
+import { formatDate, formatTime } from '../../shared/utils';
 
 const CurrencyProfitWidget: React.FunctionComponent<ICurrencyProfitWidgetProps> = ({
   currencyProfit,
@@ -18,7 +19,7 @@ const CurrencyProfitWidget: React.FunctionComponent<ICurrencyProfitWidgetProps> 
   return (
     <Grid item xs={4}>
       <Card className="text-center">
-        <CardHeader title={date} />
+        <CardHeader title={formatDate(date)} />
         <Divider />
         <div>{currencyType}</div>
         <Divider />
@@ -38,10 +39,10 @@ const CurrencyProfitWidget: React.FunctionComponent<ICurrencyProfitWidgetProps> 
               ${currencyProfitDetails.bestSellingPrice}
             </Grid>
             <Grid item xs={6}>
-              {currencyProfitDetails.buyingTime}
+              {formatTime(currencyProfitDetails.buyingTime)}
             </Grid>
             <Grid item xs={6}>
-              {currencyProfitDetails.sellingTime}
+              {formatTime(currencyProfitDetails.sellingTime)}
             </Grid>
           </Grid>
         </CardContent>
