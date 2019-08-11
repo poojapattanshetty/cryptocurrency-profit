@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <AppBar>
       <Toolbar className="toolbar">
-        <Typography variant="h6">cryptocurrency</Typography>
+        <Typography variant="h6" aria-label="You are viewing cryptocurrency app">cryptocurrency</Typography>
       </Toolbar>
     </AppBar>
   );

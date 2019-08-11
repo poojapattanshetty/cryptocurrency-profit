@@ -17,16 +17,17 @@ const CurrencyProfitWidget: React.FunctionComponent<ICurrencyProfitWidgetProps> 
   date
 }: ICurrencyProfitWidgetProps) => {
   return (
-    <Grid item xs={12} sm={8} md={4} lg={4} xl=
-    {4}>
+    <Grid item xs={12} sm={8} md={4} lg={4} xl={4}>
       <Card className="text-center">
-        <CardHeader title={formatDate(date)} />
+        <CardHeader aria-hidden="true" title={formatDate(date)} />
         <Divider />
-        <div>{currencyType}</div>
+        <div id="currency" className="currency" aria-hidden="true">
+          {currencyType}
+        </div>
         <Divider />
 
         <CardContent>
-          <Grid container justify="center">
+          <Grid container justify="center" aria-hidden="true">
             <Grid item xs={6}>
               Buy
             </Grid>
@@ -49,7 +50,7 @@ const CurrencyProfitWidget: React.FunctionComponent<ICurrencyProfitWidgetProps> 
         </CardContent>
         <Divider />
 
-        <CardContent>Profit: ${currencyProfit.toFixed(2)}</CardContent>
+        <CardContent aria-hidden="true">Profit: ${currencyProfit.toFixed(2)}</CardContent>
       </Card>
     </Grid>
   );
