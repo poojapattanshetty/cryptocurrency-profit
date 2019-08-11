@@ -1,55 +1,57 @@
 import React from 'react';
 
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardContent from '@material-ui/core/CardContent';
-import Grid from '@material-ui/core/Grid';
-import Divider from '@material-ui/core/Divider';
-
-import './CurrencyBestProfit.css';
+import { Iquote } from '../../classes/IQuote';
+import { ICurrencyProfitDetails } from '../../classes/CurrencyProfit/ICurrencyProfitDetails';
+import { CurrencyProfitWidget } from '../CurrencyProfitWidget/CurrencyProfitWidget';
 import { ICurrencyBestProfitProps } from '../../classes/CurrencyBestProfit/ICurrencyBestProfitProps';
 
-const currencyBestProfit = ({
-  currencyProfit,
-  currencyProfitDetails,
-  currencyType
-}: ICurrencyBestProfitProps) => {
+const calculateCurrencyProfit = (currencyQuotes: Iquote[]) => {
+  let currencyProfit = currencyQuotes[1].price - currencyQuotes[0].price;
+  let buyingQuote: Iquote = {
+    time: currencyQuotes[0].time,
+    price: currencyQuotes[0].price
+  };
+  let currencyProfitDetails: ICurrencyProfitDetails = {
+    bestBuyingPrice: 0,
+    bestSellingPrice: 0,
+    buyingTime: '',
+    sellingTime: ''
+  };
+
+  for (let i = 1; i < currencyQuotes.length; i++) {
+    if (currencyQuotes[i].price - buyingQuote.price > currencyProfit) {
+      currencyProfit = currencyQuotes[i].price - buyingQuote.price;
+      currencyProfitDetails.bestSellingPrice = currencyQuotes[i].price;
+      currencyProfitDetails.sellingTime = currencyQuotes[i].time;
+      currencyProfitDetails.bestBuyingPrice = buyingQuote.price;
+      currencyProfitDetails.buyingTime = buyingQuote.time;
+    }
+    if (currencyQuotes[i].price < buyingQuote.price) {
+      buyingQuote.price = currencyQuotes[i].price;
+    }
+  }
+  return { currencyProfit, currencyProfitDetails };
+};
+
+const CurrencyBestProfit: React.FunctionComponent<ICurrencyBestProfitProps> = ({
+  currencyQuotes,
+  currencyType,
+  date
+}) => {
+  //calculate best profit for each currency
+  const { currencyProfit, currencyProfitDetails } = calculateCurrencyProfit(
+    currencyQuotes
+  );
+
+  //render custom component for each currency
   return (
-      <Grid item xs={4}>
-        <Card className="text-center">
-          <CardHeader title="07-May-18" />
-          <Divider />
-          <div>{currencyType}</div>
-          <Divider />
-
-          <CardContent>
-            <Grid container justify="center">
-              <Grid item xs={6}>
-                Buy
-              </Grid>
-              <Grid item xs={6}>
-                Sell
-              </Grid>
-              <Grid item xs={6}>
-                ${currencyProfitDetails.bestBuyingPrice}
-              </Grid>
-              <Grid item xs={6}>
-                ${currencyProfitDetails.bestSellingPrice}
-              </Grid>
-              <Grid item xs={6}>
-                {currencyProfitDetails.buyingTime}
-              </Grid>
-              <Grid item xs={6}>
-                {currencyProfitDetails.sellingTime}
-              </Grid>
-            </Grid>
-          </CardContent>
-          <Divider />
-
-          <CardContent>Profit: ${currencyProfit.toFixed(2)}</CardContent>
-        </Card>
-      </Grid>
+    <CurrencyProfitWidget
+      currencyProfit={currencyProfit}
+      currencyProfitDetails={currencyProfitDetails}
+      currencyType={currencyType}
+      date={date}
+    />
   );
 };
 
-export default currencyBestProfit;
+export { CurrencyBestProfit };

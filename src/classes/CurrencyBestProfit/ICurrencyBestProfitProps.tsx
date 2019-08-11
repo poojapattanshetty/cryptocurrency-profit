@@ -1,7 +1,7 @@
-import { ICurrencyProfitDetails } from '../CurrencyProfit/ICurrencyProfitDetails';
+import { Iquote } from '../IQuote';
 
 export interface ICurrencyBestProfitProps {
-  currencyProfit: number;
-  currencyProfitDetails: ICurrencyProfitDetails;
+  currencyQuotes: Iquote[];
   currencyType: string;
+  date: string;
 }
