@@ -8,7 +8,7 @@ import Divider from '@material-ui/core/Divider';
 
 import './CurrencyProfitWidget.css';
 import { ICurrencyProfitWidgetProps } from '../../classes/CurrencyProfitWidget/ICurrencyProfitWidgetProps';
-import { formatDate, formatTime } from '../../shared/utils';
+import { formatBuyingPrice, formatDate, formatSellingPrice, formatTime } from '../../shared/utils';
 
 const CurrencyProfitWidget: React.FunctionComponent<ICurrencyProfitWidgetProps> = ({
   currencyProfit,
@@ -19,15 +19,15 @@ const CurrencyProfitWidget: React.FunctionComponent<ICurrencyProfitWidgetProps> 
   return (
     <Grid item xs={12} sm={8} md={4} lg={4} xl={4}>
       <Card className="text-center">
-        <CardHeader aria-hidden="true" title={formatDate(date)} />
+        <CardHeader title={formatDate(date)} />
         <Divider />
-        <div id="currency" className="currency" aria-hidden="true">
+        <div id="currency" className="currency">
           {currencyType}
         </div>
         <Divider />
 
         <CardContent>
-          <Grid container justify="center" aria-hidden="true">
+          <Grid container justify="center">
             <Grid item xs={6}>
               Buy
             </Grid>
@@ -35,10 +35,10 @@ const CurrencyProfitWidget: React.FunctionComponent<ICurrencyProfitWidgetProps> 
               Sell
             </Grid>
             <Grid item xs={6}>
-              ${currencyProfitDetails.bestBuyingPrice}
+              {formatBuyingPrice(currencyProfitDetails.bestBuyingPrice)}
             </Grid>
             <Grid item xs={6}>
-              ${currencyProfitDetails.bestSellingPrice}
+              {formatSellingPrice(currencyProfitDetails.bestSellingPrice)}
             </Grid>
             <Grid item xs={6}>
               {formatTime(currencyProfitDetails.buyingTime)}
@@ -50,7 +50,7 @@ const CurrencyProfitWidget: React.FunctionComponent<ICurrencyProfitWidgetProps> 
         </CardContent>
         <Divider />
 
-        <CardContent aria-hidden="true">Profit: ${currencyProfit.toFixed(2)}</CardContent>
+        <CardContent>Profit: ${currencyProfit.toFixed(2)}</CardContent>
       </Card>
     </Grid>
   );

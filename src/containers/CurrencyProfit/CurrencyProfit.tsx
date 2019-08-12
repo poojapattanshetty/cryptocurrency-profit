@@ -29,7 +29,7 @@ class CurrencyProfit extends React.PureComponent<{}, ICurrencyProfitState> {
   public render() {
     return (
       <Container className="container">
-        <Grid container justify="center" xs={12} spacing={6}>
+        <Grid container justify="center" spacing={6}>
           {this.state.cryptocurrencyPriceList.map((cryptocurrencyDetails: ICryptocurrencyPriceList, index) => {
             return (
               <CurrencyBestProfit
@@ -41,7 +41,7 @@ class CurrencyProfit extends React.PureComponent<{}, ICurrencyProfitState> {
             );
           })}
         </Grid>
-       </Container>
+      </Container>
     );
   }
 }

@@ -5,7 +5,7 @@ import { ICurrencyProfitDetails } from '../../classes/CurrencyProfit/ICurrencyPr
 import { CurrencyProfitWidget } from '../CurrencyProfitWidget/CurrencyProfitWidget';
 import { ICurrencyBestProfitProps } from '../../classes/CurrencyBestProfit/ICurrencyBestProfitProps';
 
-const calculateCurrencyProfit = (currencyQuotes: Iquote[]) => {
+export const calculateCurrencyProfit = (currencyQuotes: Iquote[]) => {
   let currencyProfit = currencyQuotes[1].price - currencyQuotes[0].price;
   let buyingQuote: Iquote = {
     time: currencyQuotes[0].time,
@@ -30,7 +30,7 @@ const calculateCurrencyProfit = (currencyQuotes: Iquote[]) => {
       buyingQuote.price = currencyQuotes[i].price;
     }
   }
-  return { currencyProfit, currencyProfitDetails };
+  return {  currencyProfit , currencyProfitDetails };
 };
 
 const CurrencyBestProfit: React.FunctionComponent<ICurrencyBestProfitProps> = ({

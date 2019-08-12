@@ -7,3 +7,11 @@ export const formatDate = (date: Date) => {
 export const formatTime = (time: Date) => {
   return time ? moment(time, "HHmm").format('hh:mm A') : '';
 };
+
+export const formatBuyingPrice = (buyingPrice: Number) => {
+  return buyingPrice ? '$' + buyingPrice  : '';
+};
+
+export const formatSellingPrice = (sellingPrice: Number) => {
+  return sellingPrice ? '$' + sellingPrice : '';
+};
