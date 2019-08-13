@@ -1,35 +1,36 @@
-Cryptocurrency Profit App
+# Cryptocurrency Profit App
 
-Technologies used:
+### Technologies used:
 
-Frontend:
+### Frontend:
 
-React
-Typescript
-momentjs for time and date
+- React
+- Typescript
+- momentjs for time and date
 
-UI:
+### UI:
 
-Bootstrap and Material UI
+- Bootstrap 
+- Material UI
 
-Testing:
-Jest
-Enzyme
+### Testing:
+- Jest
+- Enzyme
 
-API:
-AWS Lambda
-AWS API Gateway for hosting the JSON as API Endpoint
+### API:
+- AWS Lambda
+- AWS API Gateway for hosting the JSON as API Endpoint
 
 
-TODO:
-Use library for monetary calculations (Dinerojs)
-Deploy application
-Uplift UI
-Error Handling
-Accessibility
-Dockerise App
+### TODO:
+- Use library for monetary calculations (Dinerojs)
+- Deploy application
+- Uplift UI
+- Error Handling
+- Accessibility
+- Dockerise App
 
-TO RUN THE PROJECT:
+## TO RUN THE PROJECT:
 
 1. git clone the cryptocurrency-profit repository
 2. To install dependencies, type `npm install` in your terminal.
