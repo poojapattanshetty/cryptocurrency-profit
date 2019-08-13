@@ -28,3 +28,10 @@ Uplift UI
 Error Handling
 Accessibility
 Dockerise App
+
+TO RUN THE PROJECT:
+
+1. git clone the cryptocurrency-profit repository
+2. To install dependencies, type `npm install` in your terminal.
+3. Type 'npm run' in your terminal to run the project.
+4. Type 'npm test' in your terminal to test the project.
