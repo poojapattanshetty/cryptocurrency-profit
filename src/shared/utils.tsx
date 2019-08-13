@@ -15,3 +15,8 @@ export const formatBuyingPrice = (buyingPrice: Number) => {
 export const formatSellingPrice = (sellingPrice: Number) => {
   return sellingPrice ? '$' + sellingPrice : '';
 };
+
+export const formatCurrencyProfit = (currencyProfit: Number) => {
+  return currencyProfit ? '$' + currencyProfit.toFixed(2) : '';
+};
+ 

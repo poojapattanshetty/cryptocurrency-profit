@@ -2,12 +2,15 @@ import React from 'react';
 
 import { Header } from '../Header/Header';
 import CurrencyProfit from '../../containers/CurrencyProfit/CurrencyProfit';
+import { ErrorBoundary } from '../ErrorBoundary/ErrorBoundary';
 
-const Cryptocurrency = () => {
+const Cryptocurrency: React.FunctionComponent = () => {
   return (
     <>
-      <Header />
-      <CurrencyProfit />;
+      <ErrorBoundary>
+        <Header />
+        <CurrencyProfit />
+      </ErrorBoundary>
     </>
   );
 };

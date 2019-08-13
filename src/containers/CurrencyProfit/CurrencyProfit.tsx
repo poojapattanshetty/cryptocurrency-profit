@@ -10,7 +10,8 @@ import { CurrencyBestProfit } from '../../components/CurrencyBestProfit/Currency
 
 class CurrencyProfit extends React.PureComponent<{}, ICurrencyProfitState> {
   public state = {
-    cryptocurrencyPriceList: [] as ICryptocurrencyPriceList[]
+    cryptocurrencyPriceList: [] as ICryptocurrencyPriceList[],
+    hasServerErrorOccurred: false
   };
 
   componentDidMount() {
@@ -22,11 +23,15 @@ class CurrencyProfit extends React.PureComponent<{}, ICurrencyProfitState> {
       const cryptocurrencyPriceList = await getCryptocurrencyPriceList();
       this.setState({ cryptocurrencyPriceList });
     } catch (error) {
-      console.error(error);
+      this.setState({ hasServerErrorOccurred: true });
     }
   };
 
   public render() {
+    if (this.state.hasServerErrorOccurred) {
+      throw new Error('Something broke... Please try again!');
+    }
+
     return (
       <Container className="container">
         <Grid container justify="center" spacing={6}>
