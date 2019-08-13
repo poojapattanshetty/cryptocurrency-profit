@@ -1,7 +1,7 @@
 .MuiCard-root {
-    overflow: hidden;
-    margin-left: auto !important;
-    margin-right: auto !important;
+  overflow: hidden;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 .MuiGrid-container {
@@ -11,4 +11,6 @@
   margin-right: auto !important;
 }
 
-
+.currency-profit-widget {
+  background-color: #eff1f3;
+}
