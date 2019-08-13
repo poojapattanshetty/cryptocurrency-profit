@@ -25,10 +25,7 @@
 ### TODO:
 - Use library for monetary calculations (Dinerojs)
 - Deploy application
-- Uplift UI
-- Error Handling
 - Accessibility
-- Dockerise App
 
 ## TO RUN THE PROJECT:
 
