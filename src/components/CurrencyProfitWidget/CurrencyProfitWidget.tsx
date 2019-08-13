@@ -34,16 +34,16 @@ const CurrencyProfitWidget: React.FunctionComponent<ICurrencyProfitWidgetProps> 
             <Grid item xs={6}>
               Sell
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={6} id="bestBuyingPrice">
               {formatBuyingPrice(currencyProfitDetails.bestBuyingPrice)}
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={6} id="bestSellingPrice">
               {formatSellingPrice(currencyProfitDetails.bestSellingPrice)}
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={6} id="buyingTime">
               {formatTime(currencyProfitDetails.buyingTime)}
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={6} id="sellingTime">
               {formatTime(currencyProfitDetails.sellingTime)}
             </Grid>
           </Grid>
