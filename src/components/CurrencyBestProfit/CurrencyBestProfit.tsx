@@ -30,6 +30,7 @@ export const calculateCurrencyProfit = (currencyQuotes: Iquote[]) => {
       }
       if (currencyQuotes[i].price < buyingQuote.price) {
         buyingQuote.price = currencyQuotes[i].price;
+        buyingQuote.time = currencyQuotes[i].time;
       }
     }
     return { currencyProfit, currencyProfitDetails };
