@@ -29,7 +29,7 @@ describe('CurrencyProfit', () => {
     expect(wrapper.find(CurrencyBestProfit)).toHaveLength(3);
   });
 
-  it('should call fetchCurrencyPriceList() to set cryptocurrencyPriceList to apiResponse', async () => {
+  it('should call fetchCurrencyPriceList() to set cryptocurrencyPriceList', async () => {
     const response = await getCryptocurrencyPriceList();
     await wrapper.instance().fetchCurrencyPriceList();
     expect(wrapper.state().cryptocurrencyPriceList).toEqual(response);
