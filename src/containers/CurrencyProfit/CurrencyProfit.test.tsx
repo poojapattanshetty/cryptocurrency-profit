@@ -1,35 +1,16 @@
 import React from 'react';
 
 import { shallow } from 'enzyme';
-import { ICryptocurrencyPriceList } from '../../classes/ICryptocurrencyPriceList';
 import CurrencyProfit from './CurrencyProfit';
 import { Container, Grid } from '@material-ui/core';
 import { CurrencyBestProfit } from '../../components/CurrencyBestProfit/CurrencyBestProfit';
+import { getCryptocurrencyPriceList } from '../../http/CryptocurrencyPriceList';
 
 describe('CurrencyProfit', () => {
   let wrapper: any;
 
-  const state = {
-    cryptocurrencyPriceList: [
-      {
-        currency: 'BTC',
-        date: '20180507',
-        quotes: [
-          { time: '0915', price: '34.98' },
-          { time: '1045', price: '36.13' },
-          { time: '1230', price: '37.01' },
-          { time: '1400', price: '35.98' },
-          { time: '1530', price: '33.56' }
-        ]
-      }
-    ]
-  };
-
   beforeEach(() => {
     wrapper = shallow(<CurrencyProfit />);
-     wrapper.setState({
-       cryptocurrencyPriceList: state.cryptocurrencyPriceList
-     });
   });
 
   it('should render one <Container />', () => {
@@ -43,7 +24,14 @@ describe('CurrencyProfit', () => {
     expect(wrapper.find(Grid).props().spacing).toEqual(6);
   });
 
-  it('should render one <CurrencyBestProfit /> component for every currency object in cryptocurrenyPriceList', () => {
-    expect(wrapper.find(CurrencyBestProfit)).toHaveLength(1);
+  it('should render one <CurrencyBestProfit /> component for every currency object in cryptocurrenyPriceList', async () => {
+    await wrapper.instance().fetchCurrencyPriceList();
+    expect(wrapper.find(CurrencyBestProfit)).toHaveLength(3);
+  });
+
+  it('should call fetchCurrencyPriceList() to set cryptocurrencyPriceList to apiResponse', async () => {
+    const response = await getCryptocurrencyPriceList();
+    await wrapper.instance().fetchCurrencyPriceList();
+    expect(wrapper.state().cryptocurrencyPriceList).toEqual(response);
   });
 });
