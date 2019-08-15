@@ -8,7 +8,7 @@ import { Container, Grid } from '@material-ui/core';
 import { getCryptocurrencyPriceList } from '../../http/CryptocurrencyPriceList';
 import { CurrencyBestProfit } from '../../components/CurrencyBestProfit/CurrencyBestProfit';
 
-class CurrencyProfit extends React.PureComponent<{}, ICurrencyProfitState> {
+class CurrencyProfit extends React.Component<{}, ICurrencyProfitState> {
   public state = {
     cryptocurrencyPriceList: [] as ICryptocurrencyPriceList[],
     hasServerErrorOccurred: false
