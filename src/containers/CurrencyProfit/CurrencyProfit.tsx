@@ -15,6 +15,7 @@ class CurrencyProfit extends React.Component<{}, ICurrencyProfitState> {
   };
 
   componentDidMount() {
+    // get price list from API 
     this.fetchCurrencyPriceList();
   }
 
@@ -33,6 +34,7 @@ class CurrencyProfit extends React.Component<{}, ICurrencyProfitState> {
     }
 
     return (
+      // show card for each currency
       <Container className="container">
         <Grid container justify="center" spacing={6}>
           {this.state.cryptocurrencyPriceList.map((cryptocurrencyDetails: ICryptocurrencyPriceList, index) => {
