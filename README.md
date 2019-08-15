@@ -7,6 +7,7 @@
 - React
 - Typescript
 - momentjs for time and date
+- Axios -- lightweight HTTP client 
 
 ### UI:
 
